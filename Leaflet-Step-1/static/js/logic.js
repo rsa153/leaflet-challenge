@@ -31,7 +31,9 @@ function createMap(quakeInfo) {
     }).addTo(map);
 };
 
+for (var i = 0; i < quakeInfo.length; i++) {
 
+    var color_scale = chroma.scale(['Blue', 'Green','Red']).mode('lab').gamma(2);
+    color = color_scale((quakeInfo[i].dpt/10)).hex()
 
-
-
+}
