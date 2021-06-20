@@ -33,7 +33,20 @@ function createMap(quakeInfo) {
 
 for (var i = 0; i < quakeInfo.length; i++) {
 
-    var color_scale = chroma.scale(['Blue', 'Green','Red']).mode('lab').gamma(2);
-    color = color_scale((quakeInfo[i].dpt/10)).hex()
+    var color_scale = chroma.scale(['Blue', 'Green', 'Red']).mode('lab').gamma(2);
+    color = color_scale((quakeInfo[i].dpt / 10)).hex()
 
-}
+    var circleLayer = L.circle(quakeInfo[i].coordinates, {
+        color: "Beige",
+        weight: 0.5,
+        fillColor: color,
+        fillOpacity: 0.75,
+        radius: quakeInfo[i].mag * 15000
+
+    }).bindPopup("<h1>" + quakeInfo[i].place + "</h1> <hr> <h3>Magnitude: " + quakeInfo[i].mag + "   ||   Depth: " + quakeInfo[i].dpt + "</h3>")
+        .addTo(map);
+    circleLayer.on('mouseover', function (e) {
+        e.target.bringToFront();
+    });
+    circleLayer.addTo(map);
+};
