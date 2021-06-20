@@ -21,15 +21,17 @@ function features(data) {
 
 function createMap(quakeInfo) {
 
-    // Create a map object.
     var map = L.map("map", {
         center: [50.0000, -125.0000],
         zoom: 4
-
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(myMap);
+    }).addTo(map);
 };
+
+
+
+
 
